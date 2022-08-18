@@ -12,6 +12,7 @@ class StartViewController: UIViewController {
     var blurEffectView: UIVisualEffectView!
     
     @IBOutlet var backgroundImageView: UIImageView!
+    @IBOutlet var facebookBtn: UIButton!
     
     @IBAction func unwindToStartView(segue: UIStoryboardSegue) {
         dismiss(animated: true)
@@ -31,5 +32,9 @@ class StartViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         
         blurEffectView.frame = view.bounds
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        .portrait
     }
 }
