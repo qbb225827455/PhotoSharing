@@ -21,6 +21,7 @@
 		EEF29B9928AE7F0400B73B9D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEF29B9828AE7F0400B73B9D /* GoogleService-Info.plist */; };
 		EEF29B9C28AE7FE700B73B9D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EEF29B9B28AE7FE700B73B9D /* FirebaseAuth */; };
 		EEF29B9E28AE7FE700B73B9D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = EEF29B9D28AE7FE700B73B9D /* FirebaseDatabase */; };
+		EEF29BA328AEA55600B73B9D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF29BA228AEA55600B73B9D /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		EE97715228AE2218008E54EA /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		EEF29B9628AE632200B73B9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEF29B9828AE7F0400B73B9D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EEF29BA228AEA55600B73B9D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				EE7C316428AE34DF00F56679 /* LoginViewController.swift */,
 				EE7C316628AE353000F56679 /* SignUPViewController.swift */,
 				EE7C316A28AE4BC200F56679 /* PasswordResetViewController.swift */,
+				EEF29BA228AEA55600B73B9D /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				EE7C316B28AE4BC200F56679 /* PasswordResetViewController.swift in Sources */,
 				EE7C316528AE34DF00F56679 /* LoginViewController.swift in Sources */,
 				EE7C316728AE353000F56679 /* SignUPViewController.swift in Sources */,
+				EEF29BA328AEA55600B73B9D /* ProfileViewController.swift in Sources */,
 				EE97713C28AE1E22008E54EA /* SceneDelegate.swift in Sources */,
 				EE7C316928AE41E600F56679 /* UITextFieldPlaceholderColor.swift in Sources */,
 			);
