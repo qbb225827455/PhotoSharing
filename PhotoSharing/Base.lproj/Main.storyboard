@@ -162,7 +162,7 @@
         <!--Log In-->
         <scene sceneID="g05-xs-Iin">
             <objects>
-                <viewController id="QJ7-MO-HCY" customClass="LoginViewController" customModule="PhotoSharing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" id="QJ7-MO-HCY" customClass="LoginViewController" customModule="PhotoSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RMb-Jh-scA">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -405,6 +405,9 @@
                                                 <real key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="resetPasswordWithSender:" destination="Em0-VA-av5" eventType="touchUpInside" id="GgX-91-G8D"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
