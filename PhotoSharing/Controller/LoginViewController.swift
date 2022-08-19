@@ -48,6 +48,23 @@ class LoginViewController: UIViewController {
                 return
             }
             
+            // 確認 Email 認證是否完成
+            guard let authResult = authResult, authResult.user.isEmailVerified else {
+            
+                let alertController = UIAlertController(title: "Login error", message: "You haven't confirm your email yet", preferredStyle: .alert)
+                let resendAction = UIAlertAction(title: "Resend", style: .default, handler: { action in
+                    
+                    Auth.auth().currentUser?.sendEmailVerification(completion: nil)
+                })
+                let OKAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                
+                alertController.addAction(resendAction)
+                alertController.addAction(OKAction)
+                self.present(alertController, animated: true, completion: nil)
+                
+                return
+            }
+            
             self.view.endEditing(true)
             
             // 登入成功後到主畫面
