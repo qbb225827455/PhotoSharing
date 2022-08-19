@@ -6,12 +6,30 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileViewController: UIViewController {
+    
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = ""
+        if let currentUser = Auth.auth().currentUser {
+                
+            nameLabel.text = currentUser.displayName
+            emailLabel.text = currentUser.email
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationItem.title = "Profile"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        self.navigationItem.title = ""
     }
 }

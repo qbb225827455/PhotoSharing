@@ -660,8 +660,31 @@
                     <view key="view" contentMode="scaleToFill" id="5fE-v4-oA0">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="eeJ-QG-50Q">
+                                <rect key="frame" x="165" y="384" width="60.333333333333343" height="76"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALz-bg-R7J">
+                                        <rect key="frame" x="0.0" y="0.0" width="60.333333333333336" height="23"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Vq-RF-DJV">
+                                        <rect key="frame" x="0.0" y="53" width="60.333333333333336" height="23"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Byx-Nr-hKb"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eeJ-QG-50Q" firstAttribute="centerY" secondItem="5fE-v4-oA0" secondAttribute="centerY" id="hhc-gr-Uop"/>
+                            <constraint firstItem="eeJ-QG-50Q" firstAttribute="centerX" secondItem="5fE-v4-oA0" secondAttribute="centerX" id="pVc-nm-oT3"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vwd-BJ-PVg">
                         <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="pZB-xM-SL3">
@@ -670,15 +693,19 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailLabel" destination="4Vq-RF-DJV" id="DTv-Tl-NFx"/>
+                        <outlet property="nameLabel" destination="ALz-bg-R7J" id="77s-pK-HtG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9y-2T-HIT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1002" y="2646"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="kxU-2T-B0k">
             <objects>
-                <viewController id="9Ob-jy-DcJ" sceneMemberID="viewController">
+                <viewController id="9Ob-jy-DcJ" customClass="SettingViewController" customModule="PhotoSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QTu-gn-4gH">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -720,6 +747,9 @@
                                                 <real key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="logoutWithSender:" destination="9Ob-jy-DcJ" eventType="touchUpInside" id="eq5-Gd-Rbn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
