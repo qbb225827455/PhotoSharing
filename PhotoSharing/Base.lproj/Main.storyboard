@@ -275,6 +275,9 @@
                                                         <real key="value" value="25"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="loginWithSender:" destination="QJ7-MO-HCY" eventType="touchUpInside" id="tun-6f-fPa"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -661,12 +664,79 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" id="Vwd-BJ-PVg">
-                        <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="pZB-xM-SL3"/>
+                        <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="pZB-xM-SL3">
+                            <connections>
+                                <segue destination="9Ob-jy-DcJ" kind="show" id="dre-0w-58a"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9y-2T-HIT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1002" y="2646"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kxU-2T-B0k">
+            <objects>
+                <viewController id="9Ob-jy-DcJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QTu-gn-4gH">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="gOL-aw-VJA">
+                                <rect key="frame" x="16" y="138" width="358" height="181"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIW-mM-bsa">
+                                        <rect key="frame" x="0.0" y="0.0" width="358" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用FaceID / TouchID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUu-nC-GqG">
+                                                <rect key="frame" x="0.0" y="0.0" width="309" height="31"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tp3-2A-lBa">
+                                                <rect key="frame" x="309" y="0.0" width="51" height="31"/>
+                                            </switch>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="mUu-nC-GqG" firstAttribute="leading" secondItem="eIW-mM-bsa" secondAttribute="leading" id="aZC-JN-M2q"/>
+                                            <constraint firstAttribute="trailing" secondItem="Tp3-2A-lBa" secondAttribute="trailing" id="khy-gG-1O5"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vH3-Z3-6mZ" customClass="ButtonView" customModule="PhotoSharing" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="131" width="358" height="50"/>
+                                        <color key="backgroundColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="e9t-rG-RyS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="LOG OUT">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="s0K-71-HJY"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gOL-aw-VJA" firstAttribute="leading" secondItem="s0K-71-HJY" secondAttribute="leading" constant="16" id="316-J9-jMh"/>
+                            <constraint firstItem="gOL-aw-VJA" firstAttribute="top" secondItem="s0K-71-HJY" secondAttribute="top" constant="50" id="Hte-Em-SBr"/>
+                            <constraint firstItem="s0K-71-HJY" firstAttribute="trailing" secondItem="gOL-aw-VJA" secondAttribute="trailing" constant="16" id="aL1-p7-QQQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="WWX-gk-DeA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6BI-L0-EJM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1757" y="2646"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bod-dc-Akg">
@@ -828,6 +898,9 @@
         </designable>
         <designable name="j5F-mg-9Uq">
             <size key="intrinsicContentSize" width="55" height="33"/>
+        </designable>
+        <designable name="vH3-Z3-6mZ">
+            <size key="intrinsicContentSize" width="78" height="34"/>
         </designable>
     </designables>
     <resources>

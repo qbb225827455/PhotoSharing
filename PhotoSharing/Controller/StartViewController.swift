@@ -33,8 +33,4 @@ class StartViewController: UIViewController {
         
         blurEffectView.frame = view.bounds
     }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        .portrait
-    }
 }
