@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        setRootVC()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -50,3 +52,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+extension SceneDelegate {
+    
+    func setRootVC() {
+        
+        // 已經登入，設定 HomeView 為 rootVC
+        if let currentUser = Auth.auth().currentUser {
+         
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let rootVC = storyboard.instantiateViewController(withIdentifier: "HomeView")
+            self.window?.rootViewController = rootVC
+        }
+        // 沒有登入，設定 StartView 為 rootVC
+        else {
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let rootVC = storyboard.instantiateViewController(withIdentifier: "StartView")
+            self.window?.rootViewController = rootVC
+        }
+        
+    }
+}
