@@ -74,6 +74,9 @@
                                                 <real key="value" value="-10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="facebookLoginWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qx6-xv-lFC"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QjI-0B-9ha" customClass="ButtonView" customModule="PhotoSharing" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="58" width="350" height="50"/>
