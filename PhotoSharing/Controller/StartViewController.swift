@@ -6,8 +6,9 @@
 //
 
 import UIKit
-import FacebookLogin
 import Firebase
+import FacebookLogin
+import GoogleSignIn
 
 class StartViewController: UIViewController {
     
@@ -35,7 +36,6 @@ class StartViewController: UIViewController {
         // https://developers.facebook.com/docs/permissions/reference#login_permissions
         loginManager.logIn(permissions: ["public_profile", "email"], from: self) { result, error in
             
-            
             if let error = error {
                 print(error.localizedDescription)
                 return
@@ -53,6 +53,55 @@ class StartViewController: UIViewController {
             }
             
             let credential = FacebookAuthProvider.credential(withAccessToken: idTokenString)
+            
+            // Authenticate with Firebase
+            Auth.auth().signIn(with: credential, completion: { authResult, error in
+                
+                if let error = error {
+                    let alertController = UIAlertController(title: "Login error", message: error.localizedDescription, preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    
+                    alertController.addAction(OKAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                    return
+                }
+                
+                // 登入成功後到主畫面
+                if let HomeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeView") {
+                    
+                    UIApplication.shared.keyWindow?.rootViewController = HomeViewController
+                    self.dismiss(animated: true)
+                }
+            })
+        }
+    }
+    
+    // MARK: - Google Login
+    
+    @IBAction func googleLogin(sender: UIButton) {
+        
+        guard let clientID = FirebaseApp.app()?.options.clientID else {
+            return
+        }
+        
+        let config = GIDConfiguration(clientID: clientID)
+        
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
+            
+            if let error = error {
+                
+                print(error.localizedDescription)
+                return
+            }
+            
+            guard let authentication = user?.authentication,
+                  let idToken = authentication.idToken else {
+                
+                return
+            }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
             
             // Authenticate with Firebase
             Auth.auth().signIn(with: credential, completion: { authResult, error in

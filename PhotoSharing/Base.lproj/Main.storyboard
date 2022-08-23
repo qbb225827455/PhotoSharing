@@ -101,6 +101,9 @@
                                                 <real key="value" value="-10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="googleLoginWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="STI-ty-fd5"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

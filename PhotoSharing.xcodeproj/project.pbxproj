@@ -25,6 +25,7 @@
 		EEF29BA728AF750500B73B9D /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF29BA628AF750500B73B9D /* SettingViewController.swift */; };
 		EEF29BB428AFBC5600B73B9D /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = EEF29BB328AFBC5600B73B9D /* FacebookCore */; };
 		EEF29BB628AFBC5600B73B9D /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = EEF29BB528AFBC5600B73B9D /* FacebookLogin */; };
+		EEF29BC128B4C7F400B73B9D /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = EEF29BC028B4C7F400B73B9D /* GoogleSignIn */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEF29BC128B4C7F400B73B9D /* GoogleSignIn in Frameworks */,
 				EEF29BB628AFBC5600B73B9D /* FacebookLogin in Frameworks */,
 				EEF29B9E28AE7FE700B73B9D /* FirebaseDatabase in Frameworks */,
 				EEF29BB428AFBC5600B73B9D /* FacebookCore in Frameworks */,
@@ -136,6 +138,7 @@
 				EEF29B9D28AE7FE700B73B9D /* FirebaseDatabase */,
 				EEF29BB328AFBC5600B73B9D /* FacebookCore */,
 				EEF29BB528AFBC5600B73B9D /* FacebookLogin */,
+				EEF29BC028B4C7F400B73B9D /* GoogleSignIn */,
 			);
 			productName = PhotoSharing;
 			productReference = EE97713628AE1E22008E54EA /* PhotoSharing.app */;
@@ -168,6 +171,7 @@
 			packageReferences = (
 				EEF29B9A28AE7FE700B73B9D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EEF29BB228AFBC5600B73B9D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				EEF29BBF28B4C7F400B73B9D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = EE97713728AE1E22008E54EA /* Products */;
 			projectDirPath = "";
@@ -444,6 +448,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		EEF29BBF28B4C7F400B73B9D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -466,6 +478,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EEF29BB228AFBC5600B73B9D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookLogin;
+		};
+		EEF29BC028B4C7F400B73B9D /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEF29BBF28B4C7F400B73B9D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
