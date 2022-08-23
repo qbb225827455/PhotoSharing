@@ -29,6 +29,7 @@ class StartViewController: UIViewController {
     @IBAction func facebookLogin(sender: UIButton) {
         
         let loginManager = LoginManager()
+        loginManager.logOut()
         
         // 除了 email 和 public_profile，其他權限皆需要應用程式審查
         // https://developers.facebook.com/docs/permissions/reference#login_permissions
