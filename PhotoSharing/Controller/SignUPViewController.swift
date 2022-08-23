@@ -63,27 +63,12 @@ class SignUPViewController: UIViewController {
             
             self.view.endEditing(true)
             
-            Auth.auth().currentUser?.sendEmailVerification(completion: { error in
+            // 註冊成功後回到 StartView
+            if let StartViewController = self.storyboard?.instantiateViewController(withIdentifier: "StartView") {
                 
-                if let error = error {
-                    print(error.localizedDescription)
-                }
-            })
-            
-            let alertController = UIAlertController(title: "Email verification", message: "We have just send a confirm email to your email address", preferredStyle: .alert)
-            let OKAction = UIAlertAction(title: "OK", style: .cancel, handler: { action in
-                
-            
-                // 註冊成功後回到 StartView
-                if let StartViewController = self.storyboard?.instantiateViewController(withIdentifier: "StartView") {
-                    
-                    UIApplication.shared.keyWindow?.rootViewController = StartViewController
-                    self.dismiss(animated: true)
-                }
-            })
-            
-            alertController.addAction(OKAction)
-            self.present(alertController, animated: true, completion: nil)
+                UIApplication.shared.keyWindow?.rootViewController = StartViewController
+                self.dismiss(animated: true)
+            }
         })
     }
     

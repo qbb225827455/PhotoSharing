@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController {
             nameLabel.text = currentUser.displayName
             emailLabel.text = currentUser.email
             print("-UID: \(currentUser.uid)")
+            print("-photoURL: \(currentUser.photoURL)")
         }
     }
     
