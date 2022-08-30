@@ -36,7 +36,7 @@ class HomeTableViewController: UITableViewController {
                 return
             }
             
-            PostService.shared.uploadImage(image: photo.image) {
+            PostService.shared.uploadPostImage(image: photo.image) {
                 
                 picker.dismiss(animated: true, completion: nil)
             }

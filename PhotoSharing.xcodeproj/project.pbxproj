@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		EE6AE44B28B4D89D003CCEF3 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = EE6AE44A28B4D89D003CCEF3 /* YPImagePicker */; };
 		EE6AE44D28B4D8C4003CCEF3 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE44C28B4D8C4003CCEF3 /* HomeTableViewController.swift */; };
-		EE6AE44F28B4DCF0003CCEF3 /* UIImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE44E28B4DCF0003CCEF3 /* UIImageScale.swift */; };
-		EE6AE45328B77EAF003CCEF3 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45228B77EAF003CCEF3 /* UIImageView+Ext.swift */; };
+		EE6AE44F28B4DCF0003CCEF3 /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE44E28B4DCF0003CCEF3 /* UIImage+Scale.swift */; };
+		EE6AE45328B77EAF003CCEF3 /* UIImageView+downloadProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45228B77EAF003CCEF3 /* UIImageView+downloadProfileImage.swift */; };
 		EE6AE45628BDFA4F003CCEF3 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45528BDFA4F003CCEF3 /* Post.swift */; };
 		EE6AE45928BE00E2003CCEF3 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45828BE00E2003CCEF3 /* PostService.swift */; };
+		EE6AE45B28BE4316003CCEF3 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45A28BE4316003CCEF3 /* ImageCacheManager.swift */; };
 		EE7C316528AE34DF00F56679 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C316428AE34DF00F56679 /* LoginViewController.swift */; };
 		EE7C316728AE353000F56679 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C316628AE353000F56679 /* SignUPViewController.swift */; };
 		EE7C316928AE41E600F56679 /* UITextFieldPlaceholderColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C316828AE41E600F56679 /* UITextFieldPlaceholderColor.swift */; };
@@ -40,10 +41,11 @@
 
 /* Begin PBXFileReference section */
 		EE6AE44C28B4D8C4003CCEF3 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
-		EE6AE44E28B4DCF0003CCEF3 /* UIImageScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageScale.swift; sourceTree = "<group>"; };
-		EE6AE45228B77EAF003CCEF3 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		EE6AE44E28B4DCF0003CCEF3 /* UIImage+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
+		EE6AE45228B77EAF003CCEF3 /* UIImageView+downloadProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+downloadProfileImage.swift"; sourceTree = "<group>"; };
 		EE6AE45528BDFA4F003CCEF3 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		EE6AE45828BE00E2003CCEF3 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		EE6AE45A28BE4316003CCEF3 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		EE7C316428AE34DF00F56679 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EE7C316628AE353000F56679 /* SignUPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPViewController.swift; sourceTree = "<group>"; };
 		EE7C316828AE41E600F56679 /* UITextFieldPlaceholderColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldPlaceholderColor.swift; sourceTree = "<group>"; };
@@ -86,7 +88,9 @@
 		EE6AE45028B77E71003CCEF3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				EE6AE45228B77EAF003CCEF3 /* UIImageView+Ext.swift */,
+				EE6AE45228B77EAF003CCEF3 /* UIImageView+downloadProfileImage.swift */,
+				EE6AE44E28B4DCF0003CCEF3 /* UIImage+Scale.swift */,
+				EE7C316828AE41E600F56679 /* UITextFieldPlaceholderColor.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -103,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				EE6AE45828BE00E2003CCEF3 /* PostService.swift */,
+				EE6AE45A28BE4316003CCEF3 /* ImageCacheManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -146,8 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				EE97715028AE1F0A008E54EA /* ButtonView.swift */,
-				EE7C316828AE41E600F56679 /* UITextFieldPlaceholderColor.swift */,
-				EE6AE44E28B4DCF0003CCEF3 /* UIImageScale.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,16 +264,17 @@
 				EE97713A28AE1E22008E54EA /* AppDelegate.swift in Sources */,
 				EE97715128AE1F0A008E54EA /* ButtonView.swift in Sources */,
 				EE7C316B28AE4BC200F56679 /* PasswordResetViewController.swift in Sources */,
+				EE6AE45B28BE4316003CCEF3 /* ImageCacheManager.swift in Sources */,
 				EE7C316528AE34DF00F56679 /* LoginViewController.swift in Sources */,
 				EE6AE45628BDFA4F003CCEF3 /* Post.swift in Sources */,
 				EEF29BA728AF750500B73B9D /* SettingViewController.swift in Sources */,
-				EE6AE45328B77EAF003CCEF3 /* UIImageView+Ext.swift in Sources */,
+				EE6AE45328B77EAF003CCEF3 /* UIImageView+downloadProfileImage.swift in Sources */,
 				EE7C316728AE353000F56679 /* SignUPViewController.swift in Sources */,
 				EEF29BA328AEA55600B73B9D /* ProfileViewController.swift in Sources */,
 				EE6AE45928BE00E2003CCEF3 /* PostService.swift in Sources */,
 				EE6AE44D28B4D8C4003CCEF3 /* HomeTableViewController.swift in Sources */,
 				EE97713C28AE1E22008E54EA /* SceneDelegate.swift in Sources */,
-				EE6AE44F28B4DCF0003CCEF3 /* UIImageScale.swift in Sources */,
+				EE6AE44F28B4DCF0003CCEF3 /* UIImage+Scale.swift in Sources */,
 				EE7C316928AE41E600F56679 /* UITextFieldPlaceholderColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

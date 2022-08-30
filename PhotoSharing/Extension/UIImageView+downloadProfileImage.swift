@@ -18,7 +18,6 @@ extension UIImageView {
         let uidphotoString = "\(uid)photo"
         print("#### uidphotoString ####")
         print(uidphotoString)
-        let cacheImage = imageCache.object(forKey: uidphotoString as NSString)
         if let cacheImage = imageCache.object(forKey: uidphotoString as NSString) {
             self.image = cacheImage
             print("Get image from cache!")
