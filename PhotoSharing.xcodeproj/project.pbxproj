@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE6AE44B28B4D89D003CCEF3 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = EE6AE44A28B4D89D003CCEF3 /* YPImagePicker */; };
+		EE6AE44D28B4D8C4003CCEF3 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE44C28B4D8C4003CCEF3 /* HomeTableViewController.swift */; };
+		EE6AE44F28B4DCF0003CCEF3 /* UIImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE44E28B4DCF0003CCEF3 /* UIImageScale.swift */; };
+		EE6AE45328B77EAF003CCEF3 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45228B77EAF003CCEF3 /* UIImageView+Ext.swift */; };
+		EE6AE45628BDFA4F003CCEF3 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45528BDFA4F003CCEF3 /* Post.swift */; };
+		EE6AE45928BE00E2003CCEF3 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45828BE00E2003CCEF3 /* PostService.swift */; };
 		EE7C316528AE34DF00F56679 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C316428AE34DF00F56679 /* LoginViewController.swift */; };
 		EE7C316728AE353000F56679 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C316628AE353000F56679 /* SignUPViewController.swift */; };
 		EE7C316928AE41E600F56679 /* UITextFieldPlaceholderColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C316828AE41E600F56679 /* UITextFieldPlaceholderColor.swift */; };
@@ -26,9 +32,18 @@
 		EEF29BB428AFBC5600B73B9D /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = EEF29BB328AFBC5600B73B9D /* FacebookCore */; };
 		EEF29BB628AFBC5600B73B9D /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = EEF29BB528AFBC5600B73B9D /* FacebookLogin */; };
 		EEF29BC128B4C7F400B73B9D /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = EEF29BC028B4C7F400B73B9D /* GoogleSignIn */; };
+		EEF29BC628B4D73800B73B9D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EEF29BC528B4D73800B73B9D /* FirebaseAnalytics */; };
+		EEF29BC828B4D73800B73B9D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EEF29BC728B4D73800B73B9D /* FirebaseAuth */; };
+		EEF29BCA28B4D73800B73B9D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = EEF29BC928B4D73800B73B9D /* FirebaseDatabase */; };
+		EEF29BCC28B4D73800B73B9D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EEF29BCB28B4D73800B73B9D /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE6AE44C28B4D8C4003CCEF3 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		EE6AE44E28B4DCF0003CCEF3 /* UIImageScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageScale.swift; sourceTree = "<group>"; };
+		EE6AE45228B77EAF003CCEF3 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		EE6AE45528BDFA4F003CCEF3 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		EE6AE45828BE00E2003CCEF3 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		EE7C316428AE34DF00F56679 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EE7C316628AE353000F56679 /* SignUPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPViewController.swift; sourceTree = "<group>"; };
 		EE7C316828AE41E600F56679 /* UITextFieldPlaceholderColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldPlaceholderColor.swift; sourceTree = "<group>"; };
@@ -53,9 +68,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEF29BC128B4C7F400B73B9D /* GoogleSignIn in Frameworks */,
+				EE6AE44B28B4D89D003CCEF3 /* YPImagePicker in Frameworks */,
 				EEF29BB628AFBC5600B73B9D /* FacebookLogin in Frameworks */,
+				EEF29BCC28B4D73800B73B9D /* FirebaseStorage in Frameworks */,
+				EEF29BC628B4D73800B73B9D /* FirebaseAnalytics in Frameworks */,
 				EEF29B9E28AE7FE700B73B9D /* FirebaseDatabase in Frameworks */,
 				EEF29BB428AFBC5600B73B9D /* FacebookCore in Frameworks */,
+				EEF29BC828B4D73800B73B9D /* FirebaseAuth in Frameworks */,
+				EEF29BCA28B4D73800B73B9D /* FirebaseDatabase in Frameworks */,
 				EEF29B9C28AE7FE700B73B9D /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +83,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE6AE45028B77E71003CCEF3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EE6AE45228B77EAF003CCEF3 /* UIImageView+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		EE6AE45428BDFA37003CCEF3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE6AE45528BDFA4F003CCEF3 /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EE6AE45728BE00CC003CCEF3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EE6AE45828BE00E2003CCEF3 /* PostService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		EE97712D28AE1E22008E54EA = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +126,9 @@
 		EE97713828AE1E22008E54EA /* PhotoSharing */ = {
 			isa = PBXGroup;
 			children = (
+				EE6AE45028B77E71003CCEF3 /* Extension */,
+				EE6AE45728BE00CC003CCEF3 /* Service */,
+				EE6AE45428BDFA37003CCEF3 /* Model */,
 				EE97714D28AE1EBE008E54EA /* View */,
 				EE97714F28AE1ED4008E54EA /* Controller */,
 				EE97713928AE1E22008E54EA /* AppDelegate.swift */,
@@ -100,6 +147,7 @@
 			children = (
 				EE97715028AE1F0A008E54EA /* ButtonView.swift */,
 				EE7C316828AE41E600F56679 /* UITextFieldPlaceholderColor.swift */,
+				EE6AE44E28B4DCF0003CCEF3 /* UIImageScale.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -111,6 +159,7 @@
 				EE7C316428AE34DF00F56679 /* LoginViewController.swift */,
 				EE7C316628AE353000F56679 /* SignUPViewController.swift */,
 				EE7C316A28AE4BC200F56679 /* PasswordResetViewController.swift */,
+				EE6AE44C28B4D8C4003CCEF3 /* HomeTableViewController.swift */,
 				EEF29BA228AEA55600B73B9D /* ProfileViewController.swift */,
 				EEF29BA628AF750500B73B9D /* SettingViewController.swift */,
 			);
@@ -139,6 +188,11 @@
 				EEF29BB328AFBC5600B73B9D /* FacebookCore */,
 				EEF29BB528AFBC5600B73B9D /* FacebookLogin */,
 				EEF29BC028B4C7F400B73B9D /* GoogleSignIn */,
+				EEF29BC528B4D73800B73B9D /* FirebaseAnalytics */,
+				EEF29BC728B4D73800B73B9D /* FirebaseAuth */,
+				EEF29BC928B4D73800B73B9D /* FirebaseDatabase */,
+				EEF29BCB28B4D73800B73B9D /* FirebaseStorage */,
+				EE6AE44A28B4D89D003CCEF3 /* YPImagePicker */,
 			);
 			productName = PhotoSharing;
 			productReference = EE97713628AE1E22008E54EA /* PhotoSharing.app */;
@@ -172,6 +226,8 @@
 				EEF29B9A28AE7FE700B73B9D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EEF29BB228AFBC5600B73B9D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				EEF29BBF28B4C7F400B73B9D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				EEF29BC428B4D73800B73B9D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				EE6AE44928B4D89D003CCEF3 /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 			);
 			productRefGroup = EE97713728AE1E22008E54EA /* Products */;
 			projectDirPath = "";
@@ -206,10 +262,15 @@
 				EE97715128AE1F0A008E54EA /* ButtonView.swift in Sources */,
 				EE7C316B28AE4BC200F56679 /* PasswordResetViewController.swift in Sources */,
 				EE7C316528AE34DF00F56679 /* LoginViewController.swift in Sources */,
+				EE6AE45628BDFA4F003CCEF3 /* Post.swift in Sources */,
 				EEF29BA728AF750500B73B9D /* SettingViewController.swift in Sources */,
+				EE6AE45328B77EAF003CCEF3 /* UIImageView+Ext.swift in Sources */,
 				EE7C316728AE353000F56679 /* SignUPViewController.swift in Sources */,
 				EEF29BA328AEA55600B73B9D /* ProfileViewController.swift in Sources */,
+				EE6AE45928BE00E2003CCEF3 /* PostService.swift in Sources */,
+				EE6AE44D28B4D8C4003CCEF3 /* HomeTableViewController.swift in Sources */,
 				EE97713C28AE1E22008E54EA /* SceneDelegate.swift in Sources */,
+				EE6AE44F28B4DCF0003CCEF3 /* UIImageScale.swift in Sources */,
 				EE7C316928AE41E600F56679 /* UITextFieldPlaceholderColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +493,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EE6AE44928B4D89D003CCEF3 /* XCRemoteSwiftPackageReference "YPImagePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Yummypets/YPImagePicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		EEF29B9A28AE7FE700B73B9D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -456,9 +525,22 @@
 				kind = branch;
 			};
 		};
+		EEF29BC428B4D73800B73B9D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EE6AE44A28B4D89D003CCEF3 /* YPImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE6AE44928B4D89D003CCEF3 /* XCRemoteSwiftPackageReference "YPImagePicker" */;
+			productName = YPImagePicker;
+		};
 		EEF29B9B28AE7FE700B73B9D /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EEF29B9A28AE7FE700B73B9D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -483,6 +565,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EEF29BBF28B4C7F400B73B9D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
+		};
+		EEF29BC528B4D73800B73B9D /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEF29BC428B4D73800B73B9D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		EEF29BC728B4D73800B73B9D /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEF29BC428B4D73800B73B9D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		EEF29BC928B4D73800B73B9D /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEF29BC428B4D73800B73B9D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		EEF29BCB28B4D73800B73B9D /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEF29BC428B4D73800B73B9D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

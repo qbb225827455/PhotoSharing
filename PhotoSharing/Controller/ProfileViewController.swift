@@ -7,21 +7,31 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class ProfileViewController: UIViewController {
     
+    // MARK: - IBOulet
+    
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var profileImage: UIImageView! {
+        didSet {
+            profileImage.layer.cornerRadius = 50
+            profileImage.contentMode = .scaleAspectFill
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        profileImage.downloadProfileImage(uid: Auth.auth().currentUser!.uid)
         
         if let currentUser = Auth.auth().currentUser {
                 
             nameLabel.text = currentUser.displayName
             emailLabel.text = currentUser.email
             print("-UID: \(currentUser.uid)")
-            print("-photoURL: \(currentUser.photoURL)")
         }
     }
     

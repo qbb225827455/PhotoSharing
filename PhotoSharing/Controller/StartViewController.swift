@@ -67,6 +67,16 @@ class StartViewController: UIViewController {
                     return
                 }
                 
+                guard let currentUser = Auth.auth().currentUser else {
+                    return
+                }
+                
+                let userDatabaseRef = Database.database().reference().child("users").child(currentUser.uid)
+                let values: [String: Any] = ["name": currentUser.displayName,
+                                             "email": currentUser.email,
+                                             "profileImageURL": currentUser.photoURL?.absoluteString]
+                userDatabaseRef.updateChildValues(values)
+                
                 // 登入成功後到主畫面
                 if let HomeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeView") {
                     
@@ -115,6 +125,16 @@ class StartViewController: UIViewController {
                     
                     return
                 }
+                
+                guard let currentUser = Auth.auth().currentUser else {
+                    return
+                }
+                
+                let userDatabaseRef = Database.database().reference().child("users").child(currentUser.uid)
+                let values: [String: Any] = ["name": currentUser.displayName,
+                                             "email": currentUser.email,
+                                             "profileImageURL": currentUser.photoURL?.absoluteString]
+                userDatabaseRef.updateChildValues(values)
                 
                 // 登入成功後到主畫面
                 if let HomeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeView") {
