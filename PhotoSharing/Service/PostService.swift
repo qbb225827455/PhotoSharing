@@ -21,7 +21,7 @@ class PostService {
     let POST_DB_REF = Database.database().reference().child("posts")
     let POST_PHOTO_STORGE_REF = Storage.storage().reference().child("post_photos")
     
-    func uploadImage(image: UIImage, completionHandler: @escaping () -> Void) {
+    func uploadPostImage(image: UIImage, completionHandler: @escaping () -> Void) {
         
         let postsDatabaseRef = POST_DB_REF.childByAutoId()
         
@@ -81,6 +81,40 @@ class PostService {
             
             print("uid: \(Auth.auth().currentUser?.uid)")
             print("Uploading \(imageKey).jpg...\(completePercent)% complete!")
+        }
+    }
+    
+    func getNewestPosts(start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
+        
+        // 資料順序 舊->新，所以取得最後的資料在排序成 新->舊
+        
+        var postsQuery = POST_DB_REF.queryOrdered(byChild: Post.PostInfoKey.timestamp)
+        
+        if let latestPostTimestamp = timestamp, latestPostTimestamp > 0 {
+            
+            postsQuery = postsQuery.queryStarting(atValue: latestPostTimestamp + 1, childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
+        } else {
+            
+            postsQuery = postsQuery.queryLimited(toLast: limit)
+        }
+        
+        postsQuery.observeSingleEvent(of: .value) { DataSnapshot in
+            
+            var posts: [Post] = []
+            for item in DataSnapshot.children.allObjects as! [DataSnapshot] {
+                
+                let postInfo = item.value as? [String: Any] ?? [:]
+                
+                if let post = Post(postID: item.key, postInfo: postInfo) {
+                    posts.append(post)
+                }
+            }
+            
+            if posts.count > 0 {
+                posts.sort(by: {$0.timestamp > $1.timestamp})
+            }
+            
+            completionHandler(posts)
         }
     }
 }
