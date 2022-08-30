@@ -9,8 +9,6 @@ import UIKit
 import Firebase
 import FirebaseStorage
 
-var imageCache = NSCache<NSString, UIImage>()
-
 extension UIImageView {
     
     func downloadProfileImage(uid: String) {
@@ -18,9 +16,11 @@ extension UIImageView {
         let uidphotoString = "\(uid)photo"
         print("#### uidphotoString ####")
         print(uidphotoString)
-        if let cacheImage = imageCache.object(forKey: uidphotoString as NSString) {
-            self.image = cacheImage
-            print("Get image from cache!")
+        
+        if let data = UserDefaults.standard.data(forKey: uidphotoString) {
+            print("Load image from UserDefaults by key \(uidphotoString).")
+            let decoded = try! PropertyListDecoder().decode(Data.self, from: data)
+            self.image = UIImage(data: decoded)
             return
         }
         
@@ -42,8 +42,10 @@ extension UIImageView {
                 }
                 
                 if let downloadImage = UIImage(data: data) {
-                    imageCache.setObject(downloadImage, forKey:  uidphotoString as NSString)
-                    print("Set image into cache!")
+                    let data = downloadImage.jpegData(compressionQuality: 1)
+                    let encoded = try! PropertyListEncoder().encode(data)
+                    UserDefaults.standard.set(encoded, forKey: uidphotoString)
+                    print("Save image to UserDefaults by key \(uidphotoString).")
                     self.image = downloadImage
                 }
             }
