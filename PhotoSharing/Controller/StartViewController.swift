@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 import FacebookLogin
 import GoogleSignIn
 
@@ -72,10 +73,51 @@ class StartViewController: UIViewController {
                 }
                 
                 let userDatabaseRef = Database.database().reference().child("users").child(currentUser.uid)
-                let values: [String: Any] = ["name": currentUser.displayName,
-                                             "email": currentUser.email,
-                                             "profileImageURL": currentUser.photoURL?.absoluteString]
-                userDatabaseRef.updateChildValues(values)
+                guard let imageKey = userDatabaseRef.key else {
+                    return
+                }
+                
+                let imageURL = currentUser.photoURL?.absoluteString
+                let url = NSURL(string: imageURL!) as! URL
+                var data = NSData(contentsOf: url) as! Data
+                
+                let profileImageStorgeRef = Storage.storage().reference().child("profile_photos").child("\(imageKey).jpg")
+                
+                while data.count > 2 * 1024 * 1024 {
+                    let newData = UIImage(data: data)?.jpegData(compressionQuality: 0.9)
+                    data = newData!
+                }
+                
+                let metadata = StorageMetadata()
+                metadata.contentType = "image/jpg"
+                
+                profileImageStorgeRef.putData(data, metadata: metadata) { metadata, error in
+                    
+                    if let error = error {
+                        print(error.localizedDescription)
+                        return
+                    }
+                    
+                    profileImageStorgeRef.downloadURL { url, error in
+                        
+                        guard let url = url else {
+                            return
+                        }
+                        
+                        let imageFileURL = url.absoluteString
+                        
+                        let values: [String: Any] = ["name": currentUser.displayName,
+                                                     "email": currentUser.email,
+                                                     "profileImageURL": imageFileURL]
+                        userDatabaseRef.setValue(values)
+                    }
+                }
+                
+//                let userDatabaseRef = Database.database().reference().child("users").child(currentUser.uid)
+//                let values: [String: Any] = ["name": currentUser.displayName,
+//                                             "email": currentUser.email,
+//                                             "profileImageURL": currentUser.photoURL?.absoluteString]
+//                userDatabaseRef.updateChildValues(values)
                 
                 // 登入成功後到主畫面
                 if let HomeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeView") {
@@ -131,10 +173,45 @@ class StartViewController: UIViewController {
                 }
                 
                 let userDatabaseRef = Database.database().reference().child("users").child(currentUser.uid)
-                let values: [String: Any] = ["name": currentUser.displayName,
-                                             "email": currentUser.email,
-                                             "profileImageURL": currentUser.photoURL?.absoluteString]
-                userDatabaseRef.updateChildValues(values)
+                guard let imageKey = userDatabaseRef.key else {
+                    return
+                }
+                
+                let imageURL = GIDSignIn.sharedInstance.currentUser?.profile?.imageURL(withDimension: 400)?.absoluteString
+                let url = NSURL(string: imageURL!) as! URL
+                var data = NSData(contentsOf: url) as! Data
+                
+                let profileImageStorgeRef = Storage.storage().reference().child("profile_photos").child("\(imageKey).jpg")
+                
+                while data.count > 2 * 1024 * 1024 {
+                    let newData = UIImage(data: data)?.jpegData(compressionQuality: 0.9)
+                    data = newData!
+                }
+                
+                let metadata = StorageMetadata()
+                metadata.contentType = "image/jpg"
+                
+                profileImageStorgeRef.putData(data, metadata: metadata) { metadata, error in
+                    
+                    if let error = error {
+                        print(error.localizedDescription)
+                        return
+                    }
+                    
+                    profileImageStorgeRef.downloadURL { url, error in
+                        
+                        guard let url = url else {
+                            return
+                        }
+                        
+                        let imageFileURL = url.absoluteString
+                        
+                        let values: [String: Any] = ["name": currentUser.displayName,
+                                                     "email": currentUser.email,
+                                                     "profileImageURL": imageFileURL]
+                        userDatabaseRef.setValue(values)
+                    }
+                }
                 
                 // 登入成功後到主畫面
                 if let HomeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeView") {
