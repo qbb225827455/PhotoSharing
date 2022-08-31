@@ -14,8 +14,6 @@ extension UIImageView {
     func downloadProfileImage(uid: String) {
         
         let uidphotoString = "\(uid)photo"
-        print("#### uidphotoString ####")
-        print(uidphotoString)
         
         if let data = UserDefaults.standard.data(forKey: uidphotoString) {
             print("Load image from UserDefaults by key \(uidphotoString).")
