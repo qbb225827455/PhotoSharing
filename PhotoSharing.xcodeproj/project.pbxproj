@@ -13,7 +13,8 @@
 		EE6AE45328B77EAF003CCEF3 /* UIImageView+downloadProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45228B77EAF003CCEF3 /* UIImageView+downloadProfileImage.swift */; };
 		EE6AE45628BDFA4F003CCEF3 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45528BDFA4F003CCEF3 /* Post.swift */; };
 		EE6AE45928BE00E2003CCEF3 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45828BE00E2003CCEF3 /* PostService.swift */; };
-		EE6AE45B28BE4316003CCEF3 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45A28BE4316003CCEF3 /* ImageCacheManager.swift */; };
+		EE6AE45B28BE4316003CCEF3 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45A28BE4316003CCEF3 /* CacheManager.swift */; };
+		EE6AE45D28BE4C83003CCEF3 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE45C28BE4C83003CCEF3 /* PostsTableViewCell.swift */; };
 		EE7C316528AE34DF00F56679 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C316428AE34DF00F56679 /* LoginViewController.swift */; };
 		EE7C316728AE353000F56679 /* SignUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C316628AE353000F56679 /* SignUPViewController.swift */; };
 		EE7C316928AE41E600F56679 /* UITextFieldPlaceholderColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C316828AE41E600F56679 /* UITextFieldPlaceholderColor.swift */; };
@@ -45,7 +46,8 @@
 		EE6AE45228B77EAF003CCEF3 /* UIImageView+downloadProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+downloadProfileImage.swift"; sourceTree = "<group>"; };
 		EE6AE45528BDFA4F003CCEF3 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		EE6AE45828BE00E2003CCEF3 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
-		EE6AE45A28BE4316003CCEF3 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		EE6AE45A28BE4316003CCEF3 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		EE6AE45C28BE4C83003CCEF3 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
 		EE7C316428AE34DF00F56679 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EE7C316628AE353000F56679 /* SignUPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPViewController.swift; sourceTree = "<group>"; };
 		EE7C316828AE41E600F56679 /* UITextFieldPlaceholderColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldPlaceholderColor.swift; sourceTree = "<group>"; };
@@ -107,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				EE6AE45828BE00E2003CCEF3 /* PostService.swift */,
-				EE6AE45A28BE4316003CCEF3 /* ImageCacheManager.swift */,
+				EE6AE45A28BE4316003CCEF3 /* CacheManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				EE97715028AE1F0A008E54EA /* ButtonView.swift */,
+				EE6AE45C28BE4C83003CCEF3 /* PostsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -264,12 +267,13 @@
 				EE97713A28AE1E22008E54EA /* AppDelegate.swift in Sources */,
 				EE97715128AE1F0A008E54EA /* ButtonView.swift in Sources */,
 				EE7C316B28AE4BC200F56679 /* PasswordResetViewController.swift in Sources */,
-				EE6AE45B28BE4316003CCEF3 /* ImageCacheManager.swift in Sources */,
+				EE6AE45B28BE4316003CCEF3 /* CacheManager.swift in Sources */,
 				EE7C316528AE34DF00F56679 /* LoginViewController.swift in Sources */,
 				EE6AE45628BDFA4F003CCEF3 /* Post.swift in Sources */,
 				EEF29BA728AF750500B73B9D /* SettingViewController.swift in Sources */,
 				EE6AE45328B77EAF003CCEF3 /* UIImageView+downloadProfileImage.swift in Sources */,
 				EE7C316728AE353000F56679 /* SignUPViewController.swift in Sources */,
+				EE6AE45D28BE4C83003CCEF3 /* PostsTableViewCell.swift in Sources */,
 				EEF29BA328AEA55600B73B9D /* ProfileViewController.swift in Sources */,
 				EE6AE45928BE00E2003CCEF3 /* PostService.swift in Sources */,
 				EE6AE44D28B4D8C4003CCEF3 /* HomeTableViewController.swift in Sources */,
