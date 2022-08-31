@@ -84,7 +84,7 @@ class PostService {
         }
     }
     
-    func getNewestPosts(start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
+    func getRecentPosts(start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
         
         // 資料順序 舊->新，所以取得最後的資料在排序成 新->舊
         

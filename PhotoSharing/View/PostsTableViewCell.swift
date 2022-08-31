@@ -44,8 +44,6 @@ class PostsTableViewCell: UITableViewCell {
         
         self.selectionStyle = .none
         nameLabel.text = post.username
-
-        postImageView.image = nil
         
         if let image = CacheManager.shared.loadFromCache(key: post.imageFileURL) as? UIImage {
         
@@ -67,7 +65,6 @@ class PostsTableViewCell: UITableViewCell {
                         if self.nowpost?.imageFileURL == post.imageFileURL {
                             self.postImageView.image = downloadImage
                         }
-                        self.profileImageView.downloadProfileImage(uid: post.uid)
                         CacheManager.shared.saveInCache(obj: downloadImage, key: post.imageFileURL)
                     }
                 }

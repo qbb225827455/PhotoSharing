@@ -68,7 +68,7 @@ class HomeTableViewController: UITableViewController {
         
         isLoadingPost = true
         
-        PostService.shared.getNewestPosts(start: posts.first?.timestamp, limit: 5) { posts in
+        PostService.shared.getRecentPosts(start: posts.first?.timestamp, limit: 5) { posts in
             
             if posts.count > 0 {
                 self.posts.insert(contentsOf: posts, at: 0)
@@ -124,6 +124,7 @@ extension HomeTableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "datacell", for: indexPath) as! PostsTableViewCell
         
+        cell.profileImageView.downloadProfileImage(uid: posts[indexPath.row].uid)
         cell.configurePost(post: posts[indexPath.row])
         return cell
     }
