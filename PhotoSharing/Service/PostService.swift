@@ -110,6 +110,32 @@ class PostService {
                 }
             }
             
+            // 排序： 舊->新  --->  新->舊
+            if posts.count > 0 {
+                posts.sort(by: {$0.timestamp > $1.timestamp})
+            }
+            
+            completionHandler(posts)
+        }
+    }
+    
+    func getMorePosts(start timestamp: Int, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
+        
+        let postQuery = POST_DB_REF.queryOrdered(byChild: Post.PostInfoKey.timestamp).queryEnding(atValue: timestamp - 1, childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
+        
+        postQuery.observeSingleEvent(of: .value) { DataSnapshot in
+            
+            var posts: [Post] = []
+            for item in DataSnapshot.children.allObjects as! [DataSnapshot] {
+                
+                let postInfo = item.value as? [String: Any] ?? [:]
+                
+                if let post = Post(postID: item.key, postInfo: postInfo) {
+                    posts.append(post)
+                }
+            }
+            
+            // 排序： 舊->新  --->  新->舊
             if posts.count > 0 {
                 posts.sort(by: {$0.timestamp > $1.timestamp})
             }
