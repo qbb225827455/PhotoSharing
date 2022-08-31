@@ -45,6 +45,8 @@ class PostsTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         nameLabel.text = post.username
         
+        postImageView.image = nil
+        
         if let image = CacheManager.shared.loadFromCache(key: post.imageFileURL) as? UIImage {
         
             self.postImageView.image = image
