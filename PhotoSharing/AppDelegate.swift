@@ -77,10 +77,12 @@ extension AppDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Futura", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
         
         let tabBarApperance = UITabBarAppearance()
-        tabBarApperance.configureWithOpaqueBackground()
+        tabBarApperance.configureWithTransparentBackground()
         
         UITabBar.appearance().tintColor = UIColor.white
+        UITabBar.appearance().backgroundColor = UIColor.black
         UITabBar.appearance().standardAppearance = tabBarApperance
+        UITabBar.appearance().scrollEdgeAppearance = tabBarApperance
     }
 }
 
