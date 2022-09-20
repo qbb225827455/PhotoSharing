@@ -106,6 +106,20 @@ class HomeTableViewController: UITableViewController {
         self.tableView.insertRows(at: indexPaths, with: .fade)
         self.tableView.endUpdates()
     }
+    
+    func displayMorePosts(morePosts posts: [Post]) {
+        
+        var indexPaths: [IndexPath] = []
+        self.tableView.beginUpdates()
+        for post in posts {
+            
+            self.posts.append(post)
+            let indexPath = IndexPath(row: self.posts.count - 1, section: 0)
+            indexPaths.append(indexPath)
+        }
+        self.tableView.insertRows(at: indexPaths, with: .fade)
+        self.tableView.endUpdates()
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -127,5 +141,36 @@ extension HomeTableViewController {
         cell.profileImageView.downloadProfileImage(uid: posts[indexPath.row].uid)
         cell.configurePost(post: posts[indexPath.row])
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        print(indexPath.row)
+        guard !isLoadingPost, posts.count - indexPath.row == 2 else {
+            return
+        }
+        
+        isLoadingPost = true
+        
+        guard let lastPostTimestamp = posts.last?.timestamp else {
+            isLoadingPost = false
+            return
+        }
+        
+        PostService.shared.getMorePosts(start: lastPostTimestamp, limit: 3) { posts in
+            
+            var indexPaths: [IndexPath] = []
+            
+            self.tableView.beginUpdates()
+            for post in posts {
+                self.posts.append(post)
+                let indexPath = IndexPath(row: self.posts.count - 1, section: 0)
+                indexPaths.append(indexPath)
+            }
+            self.tableView.insertRows(at: indexPaths, with: .fade)
+            self.tableView.endUpdates()
+            
+            self.isLoadingPost = false
+        }
     }
 }
