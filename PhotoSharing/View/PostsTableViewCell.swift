@@ -16,6 +16,7 @@ class PostsTableViewCell: UITableViewCell {
     @IBOutlet var postImageView: UIImageView! {
         didSet {
             postImageView.contentMode = .scaleAspectFill
+            postImageView.layer.cornerRadius = 20
         }
     }
     

@@ -52,7 +52,8 @@ class HomeTableViewController: UITableViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.cellLayoutMarginsFollowReadableWidth = true
+        tableView.cellLayoutMarginsFollowReadableWidth = true
+        tableView.separatorStyle = .none
         
         refreshControl = UIRefreshControl()
         refreshControl?.backgroundColor = UIColor.black
