@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -759,11 +760,49 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OyP-tp-Mrd">
+                                <rect key="frame" x="0.0" y="258" width="390" height="586"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rhI-Z7-a1B">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="iii-6g-Yhx" customClass="ProfileViewCollectionViewCell" customModule="PhotoSharing" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Vh9-Z3-Bs6">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="52Z-T1-pJ7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="52Z-T1-pJ7" secondAttribute="bottom" id="06P-8P-a0r"/>
+                                                <constraint firstAttribute="trailing" secondItem="52Z-T1-pJ7" secondAttribute="trailing" id="1gK-YS-mn1"/>
+                                                <constraint firstItem="52Z-T1-pJ7" firstAttribute="leading" secondItem="Vh9-Z3-Bs6" secondAttribute="leading" id="8zB-Cz-zVA"/>
+                                                <constraint firstItem="52Z-T1-pJ7" firstAttribute="top" secondItem="Vh9-Z3-Bs6" secondAttribute="top" id="Lbx-3s-AxU"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageView" destination="52Z-T1-pJ7" id="uBQ-LA-dht"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Byx-Nr-hKb"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="OyP-tp-Mrd" firstAttribute="top" secondItem="w06-9K-1N3" secondAttribute="bottom" constant="40" id="1us-Lg-pKg"/>
                             <constraint firstItem="w06-9K-1N3" firstAttribute="leading" secondItem="Byx-Nr-hKb" secondAttribute="leading" constant="30" id="3tr-Rp-g8D"/>
+                            <constraint firstAttribute="bottom" secondItem="OyP-tp-Mrd" secondAttribute="bottom" id="E44-OK-Kyt"/>
+                            <constraint firstAttribute="trailing" secondItem="OyP-tp-Mrd" secondAttribute="trailing" id="E72-yn-JBe"/>
+                            <constraint firstItem="OyP-tp-Mrd" firstAttribute="leading" secondItem="5fE-v4-oA0" secondAttribute="leading" id="Eck-B7-CUZ"/>
                             <constraint firstItem="Byx-Nr-hKb" firstAttribute="trailing" secondItem="w06-9K-1N3" secondAttribute="trailing" constant="30" id="Kjg-5e-zvI"/>
                             <constraint firstItem="w06-9K-1N3" firstAttribute="top" secondItem="Byx-Nr-hKb" secondAttribute="top" constant="30" id="cAe-Iw-o0Z"/>
                             <constraint firstItem="w06-9K-1N3" firstAttribute="centerX" secondItem="5fE-v4-oA0" secondAttribute="centerX" id="fmC-so-eVt"/>
@@ -777,6 +816,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="OyP-tp-Mrd" id="ukB-jj-Ikt"/>
                         <outlet property="emailLabel" destination="4Vq-RF-DJV" id="DTv-Tl-NFx"/>
                         <outlet property="nameLabel" destination="ALz-bg-R7J" id="77s-pK-HtG"/>
                         <outlet property="profileImage" destination="sYc-3e-DaO" id="5jJ-C5-9VI"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE1CB12E28DEEFC100D08998 /* ProfileViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1CB12D28DEEFC100D08998 /* ProfileViewCollectionViewCell.swift */; };
 		EE6AE44B28B4D89D003CCEF3 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = EE6AE44A28B4D89D003CCEF3 /* YPImagePicker */; };
 		EE6AE44D28B4D8C4003CCEF3 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE44C28B4D8C4003CCEF3 /* HomeTableViewController.swift */; };
 		EE6AE44F28B4DCF0003CCEF3 /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE44E28B4DCF0003CCEF3 /* UIImage+Scale.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE1CB12D28DEEFC100D08998 /* ProfileViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE6AE44C28B4D8C4003CCEF3 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		EE6AE44E28B4DCF0003CCEF3 /* UIImage+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
 		EE6AE45228B77EAF003CCEF3 /* UIImageView+downloadProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+downloadProfileImage.swift"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				EE97715028AE1F0A008E54EA /* ButtonView.swift */,
 				EE6AE45C28BE4C83003CCEF3 /* PostsTableViewCell.swift */,
+				EE1CB12D28DEEFC100D08998 /* ProfileViewCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				EE6AE45328B77EAF003CCEF3 /* UIImageView+downloadProfileImage.swift in Sources */,
 				EE7C316728AE353000F56679 /* SignUPViewController.swift in Sources */,
 				EE6AE45D28BE4C83003CCEF3 /* PostsTableViewCell.swift in Sources */,
+				EE1CB12E28DEEFC100D08998 /* ProfileViewCollectionViewCell.swift in Sources */,
 				EEF29BA328AEA55600B73B9D /* ProfileViewController.swift in Sources */,
 				EE6AE45928BE00E2003CCEF3 /* PostService.swift in Sources */,
 				EE6AE44D28B4D8C4003CCEF3 /* HomeTableViewController.swift in Sources */,
