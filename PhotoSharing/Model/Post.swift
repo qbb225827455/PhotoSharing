@@ -7,7 +7,17 @@
 
 import Foundation
 
-struct Post {
+struct Post: Hashable {
+    var uuid = UUID()
+    
+    static func ==(lhs: Post, rhs: Post) -> Bool {
+        return lhs.uuid == rhs.uuid
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(uuid)
+    }
+    
     
     var postID: String
     var imageFileURL: String
