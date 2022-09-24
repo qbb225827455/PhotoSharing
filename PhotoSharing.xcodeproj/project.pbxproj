@@ -433,6 +433,8 @@
 				DEVELOPMENT_TEAM = Y6QUADNDDA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoSharing/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "For capturing pictures";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "For choosing picture to upload";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -462,6 +464,8 @@
 				DEVELOPMENT_TEAM = Y6QUADNDDA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoSharing/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "For capturing pictures";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "For choosing picture to upload";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
