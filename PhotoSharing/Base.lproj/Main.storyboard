@@ -654,17 +654,17 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="datacell" id="X8t-vn-aeC" customClass="PostsTableViewCell" customModule="PhotoSharing" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="457.33334350585938"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="450.33334350585938"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X8t-vn-aeC" id="ghB-wi-Z58">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="457.33334350585938"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="450.33334350585938"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2Pr-hb-oBP">
-                                            <rect key="frame" x="20" y="11" width="350" height="435.33333333333331"/>
+                                            <rect key="frame" x="0.0" y="15" width="390" height="435.33333333333331"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RA8-Hz-B2r">
-                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="30.333333333333332"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="390" height="30.333333333333332"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rV7-WG-nSf">
                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30.333333333333332"/>
@@ -675,7 +675,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpK-8F-ff0">
-                                                            <rect key="frame" x="50" y="0.0" width="300" height="30.333333333333332"/>
+                                                            <rect key="frame" x="50" y="0.0" width="340" height="30.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -683,7 +683,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B9r-oc-T4a">
-                                                    <rect key="frame" x="0.0" y="35.333333333333343" width="350" height="400"/>
+                                                    <rect key="frame" x="0.0" y="35.333333333333343" width="390" height="400"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="400" id="Pxi-lO-SEo"/>
                                                     </constraints>
@@ -693,10 +693,42 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="2Pr-hb-oBP" secondAttribute="trailing" id="4Jq-ux-wZU"/>
+                                        <constraint firstAttribute="bottom" secondItem="2Pr-hb-oBP" secondAttribute="bottom" id="4xt-Kt-Ofo"/>
                                         <constraint firstItem="2Pr-hb-oBP" firstAttribute="leading" secondItem="ghB-wi-Z58" secondAttribute="leadingMargin" id="8EK-fG-Og2"/>
+                                        <constraint firstAttribute="trailing" secondItem="2Pr-hb-oBP" secondAttribute="trailing" id="EFg-DJ-GVl"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="2Pr-hb-oBP" secondAttribute="bottom" id="FLX-cd-VRI"/>
+                                        <constraint firstItem="2Pr-hb-oBP" firstAttribute="top" secondItem="ghB-wi-Z58" secondAttribute="top" constant="15" id="Fmw-T1-R80"/>
                                         <constraint firstItem="2Pr-hb-oBP" firstAttribute="top" secondItem="ghB-wi-Z58" secondAttribute="topMargin" id="lkd-ww-IA2"/>
+                                        <constraint firstItem="2Pr-hb-oBP" firstAttribute="leading" secondItem="ghB-wi-Z58" secondAttribute="leading" id="wjy-O4-FqK"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="4Jq-ux-wZU"/>
+                                            <exclude reference="4xt-Kt-Ofo"/>
+                                            <exclude reference="8EK-fG-Og2"/>
+                                            <exclude reference="EFg-DJ-GVl"/>
+                                            <exclude reference="FLX-cd-VRI"/>
+                                            <exclude reference="Fmw-T1-R80"/>
+                                            <exclude reference="lkd-ww-IA2"/>
+                                            <exclude reference="wjy-O4-FqK"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <mask key="constraints">
+                                            <include reference="4xt-Kt-Ofo"/>
+                                            <include reference="EFg-DJ-GVl"/>
+                                            <include reference="Fmw-T1-R80"/>
+                                            <include reference="wjy-O4-FqK"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=regular">
+                                        <mask key="constraints">
+                                            <include reference="4Jq-ux-wZU"/>
+                                            <include reference="8EK-fG-Og2"/>
+                                            <include reference="FLX-cd-VRI"/>
+                                            <include reference="lkd-ww-IA2"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
