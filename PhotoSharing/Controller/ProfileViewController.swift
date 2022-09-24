@@ -11,6 +11,8 @@ import FirebaseStorage
 
 class ProfileViewController: UIViewController {
     
+    var posts: [Post] = []
+    
     // MARK: - IBOulet
     
     @IBOutlet var nameLabel: UILabel!
@@ -33,6 +35,13 @@ class ProfileViewController: UIViewController {
             emailLabel.text = currentUser.email
             print("-UID: \(currentUser.uid)")
         }
+        
+        loadPosts()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        loadPosts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,5 +52,18 @@ class ProfileViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         
         self.navigationItem.title = ""
+    }
+    
+    func loadPosts() {
+        
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        PostService.shared.loadCurrentUserPosts(uid: uid) { posts in
+            
+            if posts.count > 0 {
+                self.posts.insert(contentsOf: posts, at: 0)
+            }
+        }
     }
 }
