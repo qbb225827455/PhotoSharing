@@ -49,14 +49,8 @@ class ProfileViewController: UIViewController {
             print("-UID: \(currentUser.uid)")
         }
         
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            
-            layout.itemSize = CGSize(width: 80, height: 80)
-            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            layout.estimatedItemSize = .zero
-        }
-        
         collectionView.dataSource = dataSource
+        collectionView.collectionViewLayout = createGridLayout()
         
         loadPosts()
     }
@@ -72,7 +66,6 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func loadPosts() {
-        
         let semaphore = DispatchSemaphore(value: 0)
         let queue = DispatchQueue.global(qos: .background)
         
@@ -101,6 +94,28 @@ class ProfileViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    // MARK: - CollectionView grid layout
+    
+    func createGridLayout() -> UICollectionViewLayout {
+        
+        // 一列3個item
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        // 每一列的高度設定
+        var groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(120.0))
+        if (self.traitCollection.horizontalSizeClass == .regular && self.traitCollection.verticalSizeClass == .regular) {
+            groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(300.0))
+        }
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        return layout
     }
 }
 
