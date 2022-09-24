@@ -107,20 +107,6 @@ class HomeTableViewController: UITableViewController {
         self.tableView.insertRows(at: indexPaths, with: .fade)
         self.tableView.endUpdates()
     }
-    
-    func displayMorePosts(morePosts posts: [Post]) {
-        
-        var indexPaths: [IndexPath] = []
-        self.tableView.beginUpdates()
-        for post in posts {
-            
-            self.posts.append(post)
-            let indexPath = IndexPath(row: self.posts.count - 1, section: 0)
-            indexPaths.append(indexPath)
-        }
-        self.tableView.insertRows(at: indexPaths, with: .fade)
-        self.tableView.endUpdates()
-    }
 }
 
 // MARK: - UITableViewDataSource
