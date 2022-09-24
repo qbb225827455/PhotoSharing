@@ -11,10 +11,18 @@ import FirebaseStorage
 
 class ProfileViewController: UIViewController {
     
+    enum Section {
+        case all
+    }
+    
     var posts: [Post] = []
+    var refreshControl: UIRefreshControl!
+    
+    lazy var dataSource = configureDataSource()
     
     // MARK: - IBOulet
     
+    @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
     @IBOutlet var profileImage: UIImageView! {
@@ -28,6 +36,11 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         profileImage.downloadProfileImage(uid: Auth.auth().currentUser!.uid)
+        refreshControl = UIRefreshControl()
+        refreshControl?.backgroundColor = UIColor.black
+        refreshControl?.tintColor = UIColor.white
+        refreshControl?.addTarget(self, action: #selector(loadPosts), for: UIControl.Event.valueChanged)
+        collectionView.refreshControl = refreshControl
         
         if let currentUser = Auth.auth().currentUser {
                 
@@ -36,10 +49,14 @@ class ProfileViewController: UIViewController {
             print("-UID: \(currentUser.uid)")
         }
         
-        loadPosts()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            
+            layout.itemSize = CGSize(width: 80, height: 80)
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            layout.estimatedItemSize = .zero
+        }
+        
+        collectionView.dataSource = dataSource
         
         loadPosts()
     }
@@ -54,16 +71,62 @@ class ProfileViewController: UIViewController {
         self.navigationItem.title = ""
     }
     
-    func loadPosts() {
+    @objc func loadPosts() {
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        let queue = DispatchQueue.global(qos: .background)
         
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
-        PostService.shared.loadCurrentUserPosts(uid: uid) { posts in
+        
+        queue.async {
+            PostService.shared.loadCurrentUserPosts(uid: uid) { posts in
+                
+                if posts.count > 0 {
+                    self.posts = posts
+                }
+                semaphore.signal()
+            }
+            semaphore.wait()
             
-            if posts.count > 0 {
-                self.posts.insert(contentsOf: posts, at: 0)
+            
+            self.updateSnapshot()
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+                if let refreshControl = self.refreshControl {
+                    if refreshControl.isRefreshing {
+                        refreshControl.endRefreshing()
+                    }
+                }
             }
         }
+    }
+}
+
+// MARK: - Diffable Data Source
+
+extension ProfileViewController {
+    
+    func configureDataSource() -> UICollectionViewDiffableDataSource<Section, Post> {
+
+        let dataSource = UICollectionViewDiffableDataSource<Section, Post>(collectionView: collectionView) { (collectionView, indexPath, imageName) -> UICollectionViewCell? in
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ProfileViewCollectionViewCell
+            cell.configurePost(post: self.posts[indexPath.row])
+            
+            return cell
+        }
+
+        return dataSource
+    }
+    
+    func updateSnapshot(animatingChange: Bool = false) {
+
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Post>()
+        snapshot.appendSections([.all])
+        snapshot.appendItems(posts, toSection: .all)
+
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
