@@ -14,6 +14,7 @@ class HomeTableViewController: UITableViewController {
     
     var posts: [Post] = []
     var isLoadingPost = false
+    var spinner = UIActivityIndicatorView()
     
     // MARK: - 打開相機介面，上傳貼文照片
     // https://github.com/Yummypets/YPImagePicker
@@ -59,6 +60,17 @@ class HomeTableViewController: UITableViewController {
         refreshControl?.tintColor = UIColor.white
         refreshControl?.addTarget(self, action: #selector(loadNewestPosts), for: UIControl.Event.valueChanged)
         
+        spinner.style = .large
+        spinner.color = .white
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0),
+            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
+        spinner.startAnimating()
+        
         loadNewestPosts()
     }
     
@@ -81,6 +93,7 @@ class HomeTableViewController: UITableViewController {
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
                     
                     self.refreshControl?.endRefreshing()
+                    self.spinner.stopAnimating()
                     self.displayNewestPosts(newPosts: posts)
                 }
             } else {
