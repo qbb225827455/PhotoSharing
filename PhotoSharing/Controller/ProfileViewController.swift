@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
     
     var posts: [Post] = []
     var refreshControl: UIRefreshControl!
+    var isLoadingPost = false
     
     lazy var dataSource = configureDataSource()
     
@@ -50,6 +51,7 @@ class ProfileViewController: UIViewController {
         }
         
         collectionView.dataSource = dataSource
+        collectionView.delegate = self
         collectionView.collectionViewLayout = createGridLayout()
         
         loadPosts()
@@ -143,5 +145,32 @@ extension ProfileViewController {
         snapshot.appendItems(posts, toSection: .all)
 
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+}
+
+extension ProfileViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        guard !isLoadingPost, posts.count - indexPath.row == 4 else {
+            return
+        }
+        
+        isLoadingPost = true
+        
+        guard let timestamp = posts.last?.timestamp, let uid = Auth.auth().currentUser?.uid else {
+            isLoadingPost = false
+            return
+        }
+        
+        PostService.shared.getMoreCurrentUserPosts(uid: uid, start: timestamp, limit: 15) { posts in
+            
+            for post in posts {
+                self.posts.append(post)
+            }
+            
+            self.isLoadingPost = false
+            self.updateSnapshot()
+        }
     }
 }
