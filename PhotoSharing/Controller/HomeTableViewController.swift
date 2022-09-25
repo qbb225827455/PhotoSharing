@@ -131,7 +131,6 @@ extension HomeTableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        print(indexPath.row)
         guard !isLoadingPost, posts.count - indexPath.row == 2 else {
             return
         }
