@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
     
     var posts: [Post] = []
     var refreshControl: UIRefreshControl!
+    var spinner = UIActivityIndicatorView()
     var isLoadingPost = false
     
     lazy var dataSource = configureDataSource()
@@ -42,6 +43,17 @@ class ProfileViewController: UIViewController {
         refreshControl?.tintColor = UIColor.white
         refreshControl?.addTarget(self, action: #selector(loadPosts), for: UIControl.Event.valueChanged)
         collectionView.refreshControl = refreshControl
+        
+        spinner.style = .large
+        spinner.color = .white
+        spinner.hidesWhenStopped = true
+        collectionView.addSubview(spinner)
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            spinner.topAnchor.constraint(equalTo: collectionView.safeAreaLayoutGuide.topAnchor, constant: 150.0),
+            spinner.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor)])
+        spinner.startAnimating()
         
         if let currentUser = Auth.auth().currentUser {
                 
@@ -94,6 +106,7 @@ class ProfileViewController: UIViewController {
                         refreshControl.endRefreshing()
                     }
                 }
+                self.spinner.stopAnimating()
             }
         }
     }
@@ -163,10 +176,23 @@ extension ProfileViewController: UICollectionViewDelegate {
             return
         }
         
+        if isLoadingPost {
+            
+            spinner.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                spinner.bottomAnchor.constraint(equalTo: collectionView.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+                spinner.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor)])
+            spinner.startAnimating()
+        }
+        
         PostService.shared.getMoreCurrentUserPosts(uid: uid, start: timestamp, limit: 15) { posts in
             
             for post in posts {
                 self.posts.append(post)
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+                self.spinner.stopAnimating()
             }
             
             self.isLoadingPost = false
