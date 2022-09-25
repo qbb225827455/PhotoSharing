@@ -35,13 +35,12 @@ class HomeTableViewController: UITableViewController {
                 return
             }
             
-            guard let uid = Auth.auth().currentUser?.uid else {
+            guard let _ = Auth.auth().currentUser?.uid else {
                 return
             }
             
+            picker.dismiss(animated: true, completion: nil)
             PostService.shared.uploadPostImage(image: photo.image) {
-                
-                picker.dismiss(animated: true, completion: nil)
                 self.loadNewestPosts()
             }
         }
