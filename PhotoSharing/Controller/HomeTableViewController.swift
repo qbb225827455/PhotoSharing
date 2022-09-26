@@ -13,8 +13,15 @@ import FirebaseStorage
 class HomeTableViewController: UITableViewController {
     
     var posts: [Post] = []
+    var uids: [String] = []
     var isLoadingPost = false
     var spinner = UIActivityIndicatorView()
+    var usersCount = 0
+    
+    let semaphore = DispatchSemaphore(value: 0)
+    let queue = DispatchQueue.global(qos: .background)
+    
+    var collectionView: UICollectionView!
     
     // MARK: - 打開相機介面，上傳貼文照片
     // https://github.com/Yummypets/YPImagePicker
@@ -71,7 +78,13 @@ class HomeTableViewController: UITableViewController {
             spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
         spinner.startAnimating()
         
+        configureHeaderView()
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
         loadNewestPosts()
+        loadUsers()
+        //PostService.shared.reload()
     }
     
     // MARK: - 處理貼文
@@ -118,6 +131,86 @@ class HomeTableViewController: UITableViewController {
         }
         self.tableView.insertRows(at: indexPaths, with: .fade)
         self.tableView.endUpdates()
+    }
+    
+    // MARK: - CollecctionView config
+    
+    func configureHeaderView() {
+
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.minimumLineSpacing = 10
+        layout.itemSize = CGSize(width: 70, height: 70)
+
+        let headerView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 80), collectionViewLayout: layout)
+        headerView.isUserInteractionEnabled = true
+        headerView.backgroundColor = .black
+        
+        collectionView = headerView
+        collectionView.register(UINib(nibName: "UserCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myCollectionCell")
+        collectionView.showsHorizontalScrollIndicator = false
+
+        tableView.tableHeaderView = headerView
+    }
+    
+    // MARK: - Load users
+    
+    func loadUsers() {
+        let databaseRef = Database.database().reference().child("users")
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        queue.async {
+            databaseRef.observeSingleEvent(of: .value) { DataSnapshot in
+                self.usersCount = Int(DataSnapshot.childrenCount) - 1
+                for item in DataSnapshot.children.allObjects as! [DataSnapshot] {
+                    if item.key != uid {
+                        self.uids.append(item.key)
+                    }
+                }
+                self.semaphore.signal()
+            }
+            self.semaphore.wait()
+            print("=======\(self.usersCount)")
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+}
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
+extension HomeTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.usersCount + 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCollectionCell", for: indexPath) as! UserCollectionViewCell
+        if indexPath.row == 0 {
+            cell.view.isHidden = false
+            cell.plusImage.isHidden = false
+            if let uid = Auth.auth().currentUser?.uid {
+                cell.imageView.downloadProfileImage(uid: uid)
+            }
+        } else {
+            cell.view.isHidden = true
+            cell.plusImage.isHidden = true
+            let uid = self.uids[indexPath.row - 1]
+            cell.imageView.downloadProfileImage(uid: uid)
+            cell.imageView.layer.borderWidth = 2
+            cell.imageView.clipsToBounds = true
+            cell.imageView.layer.borderColor = UIColor.red.cgColor
+        }
+        
+        return cell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
 }
 
