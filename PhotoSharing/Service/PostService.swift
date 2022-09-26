@@ -197,4 +197,31 @@ class PostService {
             completionHandler(posts)
         }
     }
+    
+    func reload() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        
+        let postsQuery = POST_DB_REF.queryOrdered(byChild: Post.PostInfoKey.timestamp)
+        
+        postsQuery.observeSingleEvent(of: .value) { DataSnapshot in
+            
+            for item in DataSnapshot.children.allObjects as! [DataSnapshot] {
+                
+                let info = item.value as? [String: Any] ?? [:]
+                if info["username"] as! String == "yy y" {
+                    
+                    let post: [String: Any] = ["imageFileURL": info["imageFileURL"],
+                                               "username": info["username"],
+                                               "uid": info["uid"],
+                                               "timestamp": info["timestamp"]]
+                    print(post)
+                    let userPostsDatabaseRef = self.BASE_DB_REF.child("users").child(uid).child("posts").child(item.key)
+                    userPostsDatabaseRef.setValue(post)
+                }
+            }
+        }
+    }
 }
