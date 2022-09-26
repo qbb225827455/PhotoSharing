@@ -66,6 +66,7 @@ class HomeTableViewController: UITableViewController {
         refreshControl?.backgroundColor = UIColor.black
         refreshControl?.tintColor = UIColor.white
         refreshControl?.addTarget(self, action: #selector(loadNewestPosts), for: UIControl.Event.valueChanged)
+        refreshControl?.addTarget(self, action: #selector(loadUsers), for: UIControl.Event.valueChanged)
         
         spinner.style = .large
         spinner.color = .white
@@ -156,23 +157,24 @@ class HomeTableViewController: UITableViewController {
     
     // MARK: - Load users
     
-    func loadUsers() {
+    @objc func loadUsers() {
         let databaseRef = Database.database().reference().child("users")
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
+        var uids: [String] = []
         queue.async {
             databaseRef.observeSingleEvent(of: .value) { DataSnapshot in
                 self.usersCount = Int(DataSnapshot.childrenCount) - 1
                 for item in DataSnapshot.children.allObjects as! [DataSnapshot] {
                     if item.key != uid {
-                        self.uids.append(item.key)
+                        uids.append(item.key)
                     }
                 }
+                self.uids = uids
                 self.semaphore.signal()
             }
             self.semaphore.wait()
-            print("=======\(self.usersCount)")
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
