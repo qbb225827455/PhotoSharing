@@ -177,11 +177,6 @@ extension ProfileViewController: UICollectionViewDelegate {
         }
         
         if isLoadingPost {
-            
-            spinner.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                spinner.bottomAnchor.constraint(equalTo: collectionView.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-                spinner.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor)])
             spinner.startAnimating()
         }
         
