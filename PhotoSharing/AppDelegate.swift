@@ -69,12 +69,17 @@ extension AppDelegate {
          
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Avenir", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
         
+        let barAppearance = UINavigationBarAppearance()
+        barAppearance.backgroundColor = .black
+        barAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Futura", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().standardAppearance = barAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = barAppearance
         
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        //UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Futura", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
+       
         
         let tabBarApperance = UITabBarAppearance()
         tabBarApperance.configureWithTransparentBackground()
