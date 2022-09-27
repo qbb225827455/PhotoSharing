@@ -32,6 +32,8 @@ class HomeTableViewController: UITableViewController {
         config.wordings.next = "OK"
         config.wordings.cameraTitle = "Camera"
         config.showsPhotoFilters = false
+//        config.library.defaultMultipleSelection = true
+//        config.library.maxNumberOfItems = 3
         
         let picker = YPImagePicker(configuration: config)
         picker.navigationBar.backgroundColor = .darkGray
@@ -42,6 +44,11 @@ class HomeTableViewController: UITableViewController {
                 picker.dismiss(animated: true, completion: nil)
                 return
             }
+//            var time = 0
+//            for item in items {
+//                time += 1
+//                print("select: \(time)")
+//            }
             
             guard let _ = Auth.auth().currentUser?.uid else {
                 return
