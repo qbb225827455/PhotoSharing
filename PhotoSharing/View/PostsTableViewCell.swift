@@ -15,7 +15,7 @@ class PostsTableViewCell: UITableViewCell {
 
     @IBOutlet var postImageView: UIImageView! {
         didSet {
-            postImageView.contentMode = .scaleAspectFill
+            postImageView.contentMode = .scaleAspectFit
             if (self.traitCollection.horizontalSizeClass == .regular && self.traitCollection.verticalSizeClass == .regular) {
                 postImageView.layer.cornerRadius = 20
             }
