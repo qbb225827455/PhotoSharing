@@ -148,7 +148,7 @@ class HomeTableViewController: UITableViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.minimumLineSpacing = 10
+        layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: 70, height: 70)
 
         let headerView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 80), collectionViewLayout: layout)
@@ -200,19 +200,16 @@ extension HomeTableViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCollectionCell", for: indexPath) as! UserCollectionViewCell
         if indexPath.row == 0 {
-            cell.view.isHidden = false
+            cell.indexpathRowEuqalZero()
             cell.plusImage.isHidden = false
             if let uid = Auth.auth().currentUser?.uid {
                 cell.imageView.downloadProfileImage(uid: uid)
             }
         } else {
-            cell.view.isHidden = true
+            cell.indexpathRowNotEuqalZero()
             cell.plusImage.isHidden = true
             let uid = self.uids[indexPath.row - 1]
             cell.imageView.downloadProfileImage(uid: uid)
-            cell.imageView.layer.borderWidth = 2
-            cell.imageView.clipsToBounds = true
-            cell.imageView.layer.borderColor = UIColor.red.cgColor
         }
         
         return cell

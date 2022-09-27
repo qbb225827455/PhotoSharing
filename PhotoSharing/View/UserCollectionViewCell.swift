@@ -11,17 +11,14 @@ class UserCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var imageView: UIImageView! {
         didSet {
-            imageView.layer.cornerRadius = imageView.frame.width / 2
+            imageView.layer.cornerRadius = imageView.bounds.width / 2
             imageView.contentMode = .scaleAspectFill
         }
     }
     
     @IBOutlet var view: UIView! {
         didSet {
-            view.layer.cornerRadius = view.frame.width / 2
-            view.backgroundColor = .black
-            view.alpha = 0.5
-            view.isHidden = true
+            view.layer.cornerRadius = view.bounds.width / 2
             view.addSubview(plusImage)
         }
     }
@@ -38,5 +35,25 @@ class UserCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    func indexpathRowEuqalZero() {
+        view.backgroundColor = .black
+        view.alpha = 0.5
+        view.layer.borderWidth = 0
+    }
+    
+    func indexpathRowNotEuqalZero() {
+        let gradient = CAGradientLayer()
+        gradient.frame =  CGRect(origin: CGPoint.zero, size: view.frame.size)
+        gradient.colors = [UIColor.red.cgColor, UIColor.orange.cgColor]
+        let shape = CAShapeLayer()
+        shape.lineWidth = 2
+        shape.path = UIBezierPath(roundedRect: view.bounds.insetBy(dx: 1, dy: 1), cornerRadius: view.layer.cornerRadius).cgPath
+        shape.strokeColor = UIColor.black.cgColor
+        shape.fillColor = UIColor.clear.cgColor
+        gradient.mask = shape
+        view.layer.addSublayer(gradient)
+        
+        view.backgroundColor = UIColor.white.withAlphaComponent(0)
+    }
 }
