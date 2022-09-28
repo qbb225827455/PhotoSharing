@@ -188,6 +188,26 @@ class HomeTableViewController: UITableViewController {
             }
         }
     }
+    
+    //MARK: TableView delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = self.tableView.cellForRow(at: indexPath) as! PostsTableViewCell
+        
+        performSegue(withIdentifier: "showProfile", sender: cell.profileImageView)
+    }
+    
+    // MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showProfile" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destinationVC = segue.destination as! DetailViewController
+                destinationVC.uid = self.posts[indexPath.row].uid
+            }
+        }
+    }
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
