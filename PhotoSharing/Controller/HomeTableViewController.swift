@@ -66,7 +66,6 @@ class HomeTableViewController: UITableViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.cellLayoutMarginsFollowReadableWidth = true
         tableView.separatorStyle = .none
         
         refreshControl = UIRefreshControl()
@@ -235,9 +234,10 @@ extension HomeTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "datacell", for: indexPath) as! PostsTableViewCell
-        
+        cell.clearSubView()
         cell.profileImageView.downloadProfileImage(uid: posts[indexPath.row].uid)
         cell.configurePost(post: posts[indexPath.row])
+        cell.configScrollView()
         return cell
     }
     

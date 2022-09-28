@@ -682,34 +682,56 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B9r-oc-T4a">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNa-3O-GIC">
                                                     <rect key="frame" x="0.0" y="35.333333333333343" width="390" height="400"/>
+                                                    <subviews>
+                                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SDy-9P-3NZ">
+                                                            <rect key="frame" x="0.0" y="8" width="390" height="384"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <viewLayoutGuide key="contentLayoutGuide" id="IQl-E1-FFZ"/>
+                                                            <viewLayoutGuide key="frameLayoutGuide" id="2SU-S9-IYN"/>
+                                                        </scrollView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="400" id="Pxi-lO-SEo"/>
+                                                        <constraint firstAttribute="height" constant="400" id="bGw-yn-mKE"/>
                                                     </constraints>
-                                                </imageView>
+                                                </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="gNa-3O-GIC" secondAttribute="trailing" id="FCu-Yr-9ll"/>
+                                                <constraint firstAttribute="bottom" secondItem="gNa-3O-GIC" secondAttribute="bottom" id="gp7-mQ-bfY"/>
+                                                <constraint firstItem="gNa-3O-GIC" firstAttribute="leading" secondItem="2Pr-hb-oBP" secondAttribute="leading" id="wDb-Ax-dQX"/>
+                                            </constraints>
                                         </stackView>
+                                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="JeC-98-MXA">
+                                            <rect key="frame" x="138.66666666666666" y="410.33333333333331" width="112.66666666666666" height="25"/>
+                                            <connections>
+                                                <action selector="pageChange:" destination="X8t-vn-aeC" eventType="valueChanged" id="KFL-pk-Cbg"/>
+                                            </connections>
+                                        </pageControl>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="2Pr-hb-oBP" secondAttribute="trailing" id="4Jq-ux-wZU"/>
+                                        <constraint firstAttribute="bottom" secondItem="2Pr-hb-oBP" secondAttribute="bottom" id="4N9-yE-e5o"/>
                                         <constraint firstAttribute="bottom" secondItem="2Pr-hb-oBP" secondAttribute="bottom" id="4xt-Kt-Ofo"/>
-                                        <constraint firstItem="2Pr-hb-oBP" firstAttribute="leading" secondItem="ghB-wi-Z58" secondAttribute="leadingMargin" id="8EK-fG-Og2"/>
+                                        <constraint firstAttribute="bottom" secondItem="JeC-98-MXA" secondAttribute="bottom" constant="15" id="Dls-Q8-uj5"/>
                                         <constraint firstAttribute="trailing" secondItem="2Pr-hb-oBP" secondAttribute="trailing" id="EFg-DJ-GVl"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="2Pr-hb-oBP" secondAttribute="bottom" id="FLX-cd-VRI"/>
                                         <constraint firstItem="2Pr-hb-oBP" firstAttribute="top" secondItem="ghB-wi-Z58" secondAttribute="top" constant="15" id="Fmw-T1-R80"/>
-                                        <constraint firstItem="2Pr-hb-oBP" firstAttribute="top" secondItem="ghB-wi-Z58" secondAttribute="topMargin" id="lkd-ww-IA2"/>
+                                        <constraint firstItem="2Pr-hb-oBP" firstAttribute="leading" secondItem="ghB-wi-Z58" secondAttribute="leading" constant="100" id="Ju2-qR-aTa"/>
+                                        <constraint firstItem="JeC-98-MXA" firstAttribute="centerX" secondItem="ghB-wi-Z58" secondAttribute="centerX" id="NGT-Yv-JO6"/>
+                                        <constraint firstAttribute="trailing" secondItem="2Pr-hb-oBP" secondAttribute="trailing" constant="100" id="Ouq-m2-j9T"/>
+                                        <constraint firstItem="2Pr-hb-oBP" firstAttribute="top" secondItem="ghB-wi-Z58" secondAttribute="top" constant="15" id="X6b-zZ-Bkm"/>
                                         <constraint firstItem="2Pr-hb-oBP" firstAttribute="leading" secondItem="ghB-wi-Z58" secondAttribute="leading" id="wjy-O4-FqK"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="4Jq-ux-wZU"/>
+                                            <exclude reference="4N9-yE-e5o"/>
                                             <exclude reference="4xt-Kt-Ofo"/>
-                                            <exclude reference="8EK-fG-Og2"/>
                                             <exclude reference="EFg-DJ-GVl"/>
-                                            <exclude reference="FLX-cd-VRI"/>
                                             <exclude reference="Fmw-T1-R80"/>
-                                            <exclude reference="lkd-ww-IA2"/>
+                                            <exclude reference="Ju2-qR-aTa"/>
+                                            <exclude reference="Ouq-m2-j9T"/>
+                                            <exclude reference="X6b-zZ-Bkm"/>
                                             <exclude reference="wjy-O4-FqK"/>
                                         </mask>
                                     </variation>
@@ -723,18 +745,20 @@
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=regular">
                                         <mask key="constraints">
-                                            <include reference="4Jq-ux-wZU"/>
-                                            <include reference="8EK-fG-Og2"/>
-                                            <include reference="FLX-cd-VRI"/>
-                                            <include reference="lkd-ww-IA2"/>
+                                            <include reference="4N9-yE-e5o"/>
+                                            <include reference="Ju2-qR-aTa"/>
+                                            <include reference="Ouq-m2-j9T"/>
+                                            <include reference="X6b-zZ-Bkm"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="nameLabel" destination="rpK-8F-ff0" id="x5a-7w-XZw"/>
-                                    <outlet property="postImageView" destination="B9r-oc-T4a" id="PN0-3a-m6q"/>
+                                    <outlet property="pageControl" destination="JeC-98-MXA" id="asm-dc-Z66"/>
                                     <outlet property="profileImageView" destination="rV7-WG-nSf" id="fc7-Tl-GJX"/>
+                                    <outlet property="scrollView" destination="SDy-9P-3NZ" id="kGf-7X-fBZ"/>
+                                    <outlet property="view" destination="gNa-3O-GIC" id="0Yf-Er-GcD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
