@@ -44,6 +44,8 @@ class ProfileViewController: UIViewController {
         refreshControl?.addTarget(self, action: #selector(loadPosts), for: UIControl.Event.valueChanged)
         collectionView.refreshControl = refreshControl
         
+        self.tabBarController?.delegate = self
+        
         spinner.style = .large
         spinner.color = .white
         spinner.hidesWhenStopped = true
@@ -182,6 +184,16 @@ extension ProfileViewController: UICollectionViewDelegate {
             
             self.isLoadingPost = false
             self.updateSnapshot()
+        }
+    }
+}
+
+// MARK: - UITabBarControllerDelegate
+
+extension ProfileViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if viewController.tabBarItem.tag == 2 {
+            self.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         }
     }
 }
