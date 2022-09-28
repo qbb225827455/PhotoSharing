@@ -13,6 +13,7 @@ import FirebaseStorage
 class HomeTableViewController: UITableViewController {
     
     var posts: [Post] = []
+    var postsPageStatus: [Int] = []
     var uids: [String] = []
     var isLoadingPost = false
     var spinner = UIActivityIndicatorView()
@@ -104,6 +105,7 @@ class HomeTableViewController: UITableViewController {
             
             if posts.count > 0 {
                 self.posts.insert(contentsOf: posts, at: 0)
+                self.postsPageStatus.insert(contentsOf: Array(repeating: 0, count: posts.count), at: 0)
             }
             
             self.isLoadingPost = false
@@ -234,10 +236,12 @@ extension HomeTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "datacell", for: indexPath) as! PostsTableViewCell
+        cell.pageDelegate = self
         cell.clearSubView()
         cell.profileImageView.downloadProfileImage(uid: posts[indexPath.row].uid)
         cell.configurePost(post: posts[indexPath.row])
         cell.configScrollView()
+        cell.configPage(self.postsPageStatus[indexPath.row])
         return cell
     }
     
@@ -263,11 +267,24 @@ extension HomeTableViewController {
                 self.posts.append(post)
                 let indexPath = IndexPath(row: self.posts.count - 1, section: 0)
                 indexPaths.append(indexPath)
+                self.postsPageStatus.append(0)
             }
             self.tableView.insertRows(at: indexPaths, with: .fade)
             self.tableView.endUpdates()
             
             self.isLoadingPost = false
         }
+    }
+}
+
+// MARK: - PostsTableViewCell delegate
+
+extension HomeTableViewController: pageDelegate {
+    func getCellAndPage(cell: PostsTableViewCell, page: Int) {
+        let indexPathRow = self.tableView.indexPath(for: cell)?.row
+        self.postsPageStatus[indexPathRow!] = page
+        print("test: indexpath.row = \(indexPathRow)")
+        print("test: page = \(page)")
+        print("test: Status = \(postsPageStatus)")
     }
 }

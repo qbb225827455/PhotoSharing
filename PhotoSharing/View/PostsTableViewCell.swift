@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol pageDelegate: AnyObject {
+    func getCellAndPage(cell: PostsTableViewCell, page: Int)
+}
+
 class PostsTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     var nowpost: Post?
     var width = 0.0
+    
+    weak var pageDelegate: pageDelegate?
     
     @IBOutlet var nameLabel: UILabel!
     
@@ -30,6 +36,7 @@ class PostsTableViewCell: UITableViewCell, UIScrollViewDelegate {
         let currentPage = sender.currentPage
         let offset = CGPoint(x: self.width * CGFloat(currentPage), y: 0)
         scrollView.setContentOffset(offset, animated: true)
+        self.pageDelegate?.getCellAndPage(cell: self, page: currentPage)
     }
     
     override func awakeFromNib() {
@@ -52,6 +59,7 @@ class PostsTableViewCell: UITableViewCell, UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
         pageControl.currentPage = currentPage
+        self.pageDelegate?.getCellAndPage(cell: self, page: currentPage)
     }
     
     func configWidth() {
@@ -60,6 +68,13 @@ class PostsTableViewCell: UITableViewCell, UIScrollViewDelegate {
         } else {
             self.width = self.frame.width
         }
+    }
+    
+    func configPage(_ page: Int) {
+        let currentPage = page
+        let offset = CGPoint(x: self.width * CGFloat(currentPage), y: 0)
+        scrollView.setContentOffset(offset, animated: false)
+        pageControl.currentPage = page
     }
     
     func configScrollView() {
