@@ -283,8 +283,8 @@ extension HomeTableViewController: pageDelegate {
     func getCellAndPage(cell: PostsTableViewCell, page: Int) {
         let indexPathRow = self.tableView.indexPath(for: cell)?.row
         self.postsPageStatus[indexPathRow!] = page
-        print("test: indexpath.row = \(indexPathRow)")
-        print("test: page = \(page)")
-        print("test: Status = \(postsPageStatus)")
+//        print("test: indexpath.row = \(indexPathRow)")
+//        print("test: page = \(page)")
+//        print("test: Status = \(postsPageStatus)")
     }
 }
