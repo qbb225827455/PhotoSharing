@@ -69,16 +69,6 @@ class ProfileViewController: UIViewController {
         loadPosts()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        self.navigationItem.title = "Profile"
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-        self.navigationItem.title = ""
-    }
-    
     @objc func loadPosts() {
         let semaphore = DispatchSemaphore(value: 0)
         let queue = DispatchQueue.global(qos: .background)
