@@ -69,6 +69,8 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.separatorStyle = .none
         
+        self.tabBarController?.delegate = self
+        
         refreshControl = UIRefreshControl()
         refreshControl?.backgroundColor = UIColor.black
         refreshControl?.tintColor = UIColor.white
@@ -293,6 +295,18 @@ extension HomeTableViewController {
             self.tableView.endUpdates()
             
             self.isLoadingPost = false
+        }
+    }
+}
+
+// MARK: - UITabBarControllerDelegate
+
+extension HomeTableViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if viewController.tabBarItem.tag == 1 {
+            self.tableView.setContentOffset(CGPoint(x: 0, y: -100), animated: true)
+            loadNewestPosts()
+            self.spinner.startAnimating()
         }
     }
 }

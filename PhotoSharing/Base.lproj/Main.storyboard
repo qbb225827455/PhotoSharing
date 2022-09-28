@@ -971,7 +971,7 @@
         <scene sceneID="Lnx-WL-fIg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Huk-ka-u6K" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="RmD-lx-FLF">
+                    <tabBarItem key="tabBarItem" tag="1" title="Home" image="house" catalog="system" id="RmD-lx-FLF">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <toolbarItems/>
