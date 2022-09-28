@@ -10,6 +10,7 @@
 		EE1CB12E28DEEFC100D08998 /* ProfileViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1CB12D28DEEFC100D08998 /* ProfileViewCollectionViewCell.swift */; };
 		EE1CB13128E1B38800D08998 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1CB12F28E1B38800D08998 /* UserCollectionViewCell.swift */; };
 		EE1CB13228E1B38800D08998 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE1CB13028E1B38800D08998 /* UserCollectionViewCell.xib */; };
+		EE1CB13628E471E600D08998 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1CB13528E471E600D08998 /* DetailViewController.swift */; };
 		EE6AE44B28B4D89D003CCEF3 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = EE6AE44A28B4D89D003CCEF3 /* YPImagePicker */; };
 		EE6AE44D28B4D8C4003CCEF3 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE44C28B4D8C4003CCEF3 /* HomeTableViewController.swift */; };
 		EE6AE44F28B4DCF0003CCEF3 /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6AE44E28B4DCF0003CCEF3 /* UIImage+Scale.swift */; };
@@ -47,6 +48,7 @@
 		EE1CB12D28DEEFC100D08998 /* ProfileViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE1CB12F28E1B38800D08998 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE1CB13028E1B38800D08998 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
+		EE1CB13528E471E600D08998 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EE6AE44C28B4D8C4003CCEF3 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		EE6AE44E28B4DCF0003CCEF3 /* UIImage+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
 		EE6AE45228B77EAF003CCEF3 /* UIImageView+downloadProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+downloadProfileImage.swift"; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				EE7C316628AE353000F56679 /* SignUPViewController.swift */,
 				EE7C316A28AE4BC200F56679 /* PasswordResetViewController.swift */,
 				EE6AE44C28B4D8C4003CCEF3 /* HomeTableViewController.swift */,
+				EE1CB13528E471E600D08998 /* DetailViewController.swift */,
 				EEF29BA228AEA55600B73B9D /* ProfileViewController.swift */,
 				EEF29BA628AF750500B73B9D /* SettingViewController.swift */,
 			);
@@ -280,6 +283,7 @@
 				EE6AE45B28BE4316003CCEF3 /* CacheManager.swift in Sources */,
 				EE7C316528AE34DF00F56679 /* LoginViewController.swift in Sources */,
 				EE6AE45628BDFA4F003CCEF3 /* Post.swift in Sources */,
+				EE1CB13628E471E600D08998 /* DetailViewController.swift in Sources */,
 				EEF29BA728AF750500B73B9D /* SettingViewController.swift in Sources */,
 				EE6AE45328B77EAF003CCEF3 /* UIImageView+downloadProfileImage.swift in Sources */,
 				EE7C316728AE353000F56679 /* SignUPViewController.swift in Sources */,
